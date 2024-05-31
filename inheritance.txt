@@ -1,0 +1,132 @@
+package abc;
+
+// Base class 
+class Person {
+    // Attributes 
+    public String name;
+    public int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display basic information 
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Single Inheritance 
+class Student extends Person {
+    // Additional attributes 
+    private int studentId;
+    private String major;
+
+    // Constructor
+    public Student(String name, int age, int studentId, String major) {
+        super(name, age);
+        this.studentId = studentId;
+        this.major = major;
+    }
+
+    // Method to enroll in a course 
+    public void enrollCourse() {
+        System.out.println(name + " is enrolling in a course.");
+    }
+}
+
+// Multilevel Inheritance
+class GraduateStudent extends Student {
+    // Additional attribute 
+    private String researchTopic;
+
+    // Constructor 
+    public GraduateStudent(String name, int age, int studentId, String major, String researchTopic) {
+        super(name, age, studentId, major);
+        this.researchTopic = researchTopic;
+    }
+
+    // Method to conduct research 
+    public void conductResearch() {
+        System.out.println(name + " is conducting research on " + researchTopic);
+    }
+}
+
+// Hierarchical Inheritance 
+class Professor extends Person {
+    // Additional attributes 
+    private int employeeId;
+    private String department;
+    private String teachingSubject;
+
+    // Constructor 
+    public Professor(String name, int age, int employeeId, String department, String teachingSubject) {
+        super(name, age);
+        this.employeeId = employeeId;
+        this.department = department;
+        this.teachingSubject = teachingSubject;
+    }
+
+    // Method to conduct a lecture 
+    public void conductLecture() {
+        System.out.println(name + " is conducting a lecture on " + teachingSubject);
+    }
+}
+/*
+// Hybrid Inheritance
+class TeachingAssistant extends GraduateStudent {
+    // Additional attribute 
+    private int taId;
+
+    // Constructor 
+    public TeachingAssistant(String name, int age, int studentId, String major, String researchTopic, int taId) {
+        super(name, age, studentId, major, researchTopic);
+        this.taId = taId;
+    }
+
+    // Method to assist a professor 
+    public void assistProfessor() {
+        System.out.println(name + " is assisting a professor.");
+    }
+}
+*/
+
+// Main class for testing 
+public class InheritanceExample {
+    public static void main(String[] args) {
+        // Single Inheritance
+        Student student = new Student("John Doe", 20, 12345, "Computer Science");
+        System.out.println("Single Inheritance:");
+        student.displayInfo();
+        student.enrollCourse();
+        System.out.println();
+
+        // Multilevel Inheritance 
+        GraduateStudent gradStudent = new GraduateStudent("Alice Smith", 25, 67890, "Physics", "Quantum Mechanics");
+        System.out.println("Multilevel Inheritance:");
+        gradStudent.displayInfo();
+        gradStudent.enrollCourse();
+        gradStudent.conductResearch();
+        System.out.println();
+
+        // Hierarchical Inheritance 
+        Professor professor = new Professor("Dr. Johnson", 40, 98765, "Engineering", "Mechanical Engineering");
+        System.out.println("Hierarchical Inheritance:");
+        professor.displayInfo();
+        professor.conductLecture();
+        System.out.println();
+/*
+        // Hybrid Inheritance 
+        TeachingAssistant ta = new TeachingAssistant("Bob Brown", 22, 54321, "Mathematics", "Number Theory", 789);
+        System.out.println("Hybrid Inheritance:");
+        ta.displayInfo();
+        ta.enrollCourse();
+        ta.conductResearch();
+        ta.assistProfessor();
+          */
+    }
+    
+}

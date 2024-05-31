@@ -1,0 +1,50 @@
+package JDBCCemo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+
+public class DBDemo{
+	
+	public static void main(String[] args) throws Exception{
+		try {
+			String url = "jdbc:mysql://localhost:3306/";
+			String databaseName = "dbName";
+			String userName = "root";
+			String password = "samarth@71104";
+			Connection connection = DriverManager.getConnection(url,userName,password);
+			String sql = "CREATE DATABASE IF NOT EXISTS "+ databaseName;
+			//String sql1 = "CREATE TABLE IF NOT EXISTS employees(ID INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(100));";
+			Statement statement = connection.createStatement();
+			statement.executeUpdate(sql);
+			statement.close();
+			JOptionPane.showMessageDialog(null, "Database created successfully!");
+			
+			String urlWithDB = url + databaseName;
+			connection = DriverManager.getConnection(urlWithDB,userName,password);
+			
+			String sql1 = "CREATE TABLE IF NOT EXISTS employees(ID INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(100));";
+			statement = connection.createStatement();
+			statement.executeUpdate(sql1);
+			statement.close();
+			JOptionPane.showMessageDialog(null, "employee table created successfully!");
+			
+			String sql2 = "INSERT INTO employees(NAME) VALUES('SAMARTH')";
+			statement = connection.createStatement();
+			statement.executeUpdate(sql2);
+			statement.close();
+			
+			/*String sql3 = "DROP DATABASE dbName;";
+			statement = connection.createStatement();
+			statement.executeUpdate(sql3);
+			statement.close();
+			*/
+			
+			//JOptionPane.showMessageDialog(null, "Database dropped successfully!");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+	}
+}

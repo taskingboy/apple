@@ -1,0 +1,51 @@
+package Assig5;
+
+
+	import java.util.*;
+	public class collection {
+	    public static void main(String[] args) {
+	        ArrayList<String>Stud = new ArrayList<String>();
+	          Stud.add("1");
+	          Stud.add("JAVA");
+	          Stud.add("Nitish");
+	          Stud.add("41");
+	          /*
+	          for(int i = 0; i<Stud.size(); i++){
+	              System.out.println(Stud.get(i));
+	          }
+
+	           */
+	        System.out.println(Stud);
+	         boolean a = Stud.contains("Nitish");
+	          if(a == true)
+	              System.out.println("Array list contains Student name");
+	          else
+	              System.out.println(("Array list doest not contain Student name"));
+	          boolean b = Stud.isEmpty();
+	          if (b == true)
+	              System.out.println("Arraylist is empty");
+	          else
+	              System.out.println("Arraylist is not empty");
+
+	          int c =  Stud.size();
+	          System.out.print("Size of arraylist is:");
+	          System.out.println(c);
+	          System.out.println();
+
+	          Stud.add("Srn:202201560");
+	          System.out.println(Stud);
+	          System.out.println("Congrats! Srn has been added into the arraylist");
+	          System.out.println();
+
+	          System.out.print("Arraylist after deleting Subject:");
+	          Stud.remove("JAVA");
+	          System.out.println(Stud);
+	          System.out.println();
+
+	          Stud.clear();
+	          System.out.println(Stud);
+
+	    }
+	}
+
+

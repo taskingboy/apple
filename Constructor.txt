@@ -1,0 +1,40 @@
+package assignment1;
+
+public class Product
+{
+private int prodId;
+private String prodName;
+private double price;
+// Default constructor 
+public Product()
+    {
+        prodId = 0;
+        prodName = "DON'T KNOW";
+        price = 0.0;
+    }
+    // Parameterized constructor 
+    public Product(int prodId, String prodName, double price)
+    {
+        this.prodId = prodId;
+        this.prodName = prodName;
+        this.price = price;
+    }
+public void displayProductDetails()
+    {
+        System.out.println("Product ID: " + prodId);
+        System.out.println("Product Name: " + prodName);
+        System.out.println("Price:$" + price);
+    }
+public static void main(String[] args)
+    {
+        Product defaultProduct = new Product();
+        System.out.println("Default Product Details:");
+        defaultProduct.displayProductDetails();
+        System.out.println();
+
+        Product customProduct = new Product(109, "cricket bat", 789.9);
+        System.out.println("Custom Product Details:");
+        customProduct.displayProductDetails();
+    }
+}
+

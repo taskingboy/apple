@@ -1,0 +1,88 @@
+package assignment1;
+
+//Interface for Cardio Workout
+interface CardioWorkout {
+String getWorkoutName();
+int getDurationMinutes();
+void displayWorkoutDetails();
+}
+
+//Interface for Strength Training
+interface StrengthTraining {
+String getEquipmentUsed();
+String getInstructorName();
+void displayStrengthTrainingDetails();
+}
+
+//Derived class implementing both interfaces
+class FullBodyWorkout implements CardioWorkout, StrengthTraining {
+
+// Cardio Workout attributes
+private String cardioWorkoutName;
+private int cardioDurationMinutes;
+
+// Strength Training attributes
+private String equipmentUsed;
+private String instructorName;
+
+// Constructor
+public FullBodyWorkout(String cardioWorkoutName, int cardioDurationMinutes, String equipmentUsed, String instructorName) {
+   this.cardioWorkoutName = cardioWorkoutName;
+   this.cardioDurationMinutes = cardioDurationMinutes;
+   this.equipmentUsed = equipmentUsed;
+   this.instructorName = instructorName;
+}
+
+// Implementing methods from CardioWorkout interface
+@Override
+public String getWorkoutName() {
+   return cardioWorkoutName;
+}
+
+@Override
+public int getDurationMinutes() {
+   return cardioDurationMinutes;
+}
+
+@Override
+public void displayWorkoutDetails() {
+   System.out.println("Cardio Workout Details:");
+   System.out.println("Name: " + getWorkoutName());
+   System.out.println("Duration: " + getDurationMinutes() + " minutes");
+}
+
+// Implementing methods from StrengthTraining interface
+@Override
+public String getEquipmentUsed() {
+   return equipmentUsed;
+}
+
+@Override
+public String getInstructorName() {
+   return instructorName;
+}
+
+@Override
+public void displayStrengthTrainingDetails() {
+   System.out.println("Strength Training Details:");
+   System.out.println("Equipment Used: " + getEquipmentUsed());
+   System.out.println("Instructor: " + getInstructorName());
+}
+
+// Additional method for FullBodyWorkout class
+public void displayFullBodyWorkoutDetails() {
+   System.out.println("Full Body Workout Program:");
+   displayWorkoutDetails();
+   displayStrengthTrainingDetails();
+}
+}
+
+//Main class for testing
+public class MultipleInheritanceExample {
+public static void main(String[] args) {
+   FullBodyWorkout fullBodyWorkout = new FullBodyWorkout("Cardio and Strength Combo", 60, "Dumbbells", "Fitness Instructor John");
+
+   // Displaying full body workout details
+   fullBodyWorkout.displayFullBodyWorkoutDetails();
+}
+}

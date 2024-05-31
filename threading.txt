@@ -1,0 +1,75 @@
+package thread;
+
+import java.util.*;
+
+class ThreadAttendance extends Thread {
+    private String className;
+    private List<String> students;
+
+    public ThreadAttendance(String className, List<String> students) {
+        this.className = className;
+        this.students = students;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) { // Assuming attendance for 5 days
+            System.out.println("Day " + (i + 1) + " - " + className + " Class Attendance:");
+            for (String student : students) {
+                System.out.println("  " + student + " - Present");
+            }
+            try {
+                Thread.sleep(1000); // Simulating a delay for the next day
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class RunnableAttendance implements Runnable {
+    private String studentName;
+
+    public RunnableAttendance(String studentName) {
+        this.studentName = studentName;
+    }
+
+    @Override
+    public void run() {
+        System.out.println(studentName + " is late!");
+    }
+}
+
+public class threading {
+    public static void main(String[] args) {
+        List<String> physicsClassStudents = new ArrayList<>();
+        physicsClassStudents.add("John");
+        physicsClassStudents.add("Alice");
+        physicsClassStudents.add("Bob");
+
+        List<String> mathClassStudents = new ArrayList<>();
+        mathClassStudents.add("Emma");
+        mathClassStudents.add("Mark");
+        mathClassStudents.add("Sarah");
+
+        Thread physicsThread = new ThreadAttendance("Physics", physicsClassStudents);
+        Thread mathThread = new ThreadAttendance("Math", mathClassStudents);
+
+        physicsThread.start();
+        mathThread.start();
+
+        // Simulating students arriving late
+        RunnableAttendance student1 = new RunnableAttendance("Tom");
+        RunnableAttendance student2 = new RunnableAttendance("Lily");
+        RunnableAttendance student3 = new RunnableAttendance("David");
+
+        Thread lateStudentsThread = new Thread(student1);
+        lateStudentsThread.start();
+
+        lateStudentsThread = new Thread(student2);
+        lateStudentsThread.start();
+
+        lateStudentsThread = new Thread(student3);
+        lateStudentsThread.start();
+    }
+}
